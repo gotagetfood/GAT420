@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [Range(1, 10)] public float maxSpeed = 5;
+    [Range(1, 10)] public float minSpeed = 0.2f;
+    [Range(1, 10)] public float maxForce = 5;
+
+
     public Vector3 velocity { get; set; } = Vector3.zero;
     public Vector3 acceleration { get; set; } = Vector3.zero;
+    public Vector3 direction { get { return velocity.normalized; } }
 
-    [Range(1, 10)] public float maxSpeed = 5;
 
     public void ApplyForce(Vector3 force)
     {
@@ -17,7 +22,7 @@ public class Movement : MonoBehaviour
     void LateUpdate()
     {
         velocity += acceleration * Time.deltaTime;
-        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        velocity = Utilities.ClampMagnitude(velocity, minSpeed ,maxSpeed);
         transform.position += velocity * Time.deltaTime;
 
         if (velocity.sqrMagnitude > 0.1f)
