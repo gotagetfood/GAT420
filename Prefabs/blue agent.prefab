@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5324699726844153671}
   - component: {fileID: 5324699726844153672}
   - component: {fileID: 5324699726844153667}
-  - component: {fileID: 5961818105562733407}
-  - component: {fileID: 5324699726844153668}
   - component: {fileID: 5324699726844153669}
+  - component: {fileID: 5882963790947286843}
+  - component: {fileID: 4742758327216049226}
+  - component: {fileID: 8577114042969240122}
   m_Layer: 0
   m_Name: blue agent
   m_TagString: Agent_Blue
@@ -115,40 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa7d0a14ce775a459c4e97b0784a2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perception: {fileID: 5324699726844153668}
+  perception: {fileID: 5882963790947286843}
   movement: {fileID: 5324699726844153669}
-  flockPerception: {fileID: 5961818105562733407}
+  flockPerception: {fileID: 4742758327216049226}
+  obstaclePerception: {fileID: 8577114042969240122}
   data: {fileID: 11400000, guid: 648a4fbbe36b7744dbee102e2f9f9550, type: 2}
---- !u!114 &5961818105562733407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324699726844153675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c77e3acb5a79b4ab30a1f95b7d26b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 20
-  maxAngle: 180
-  tagName: Agent_Blue
---- !u!114 &5324699726844153668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324699726844153675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c77e3acb5a79b4ab30a1f95b7d26b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 20
-  maxAngle: 45
-  tagName: Agent_Red
 --- !u!114 &5324699726844153669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +136,59 @@ MonoBehaviour:
   maxSpeed: 5
   minSpeed: 2
   maxForce: 5
+--- !u!114 &5882963790947286843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5324699726844153675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bac6b28bd04d646b56e92c4684cc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 15
+  maxAngle: 80
+  tagName: Agent_Blue
+  raycastTransform: {fileID: 5324699726946577356}
+  numRaycast: 16
+--- !u!114 &4742758327216049226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5324699726844153675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bac6b28bd04d646b56e92c4684cc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 10
+  maxAngle: 150
+  tagName: Agent_Red
+  raycastTransform: {fileID: 5324699726946577356}
+  numRaycast: 24
+--- !u!114 &8577114042969240122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5324699726844153675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953070efdf226124d9ef3c3a78ba5d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastTransform: {fileID: 5324699726946577356}
+  distance: 10
+  maxAngle: 45
+  numRaycast: 16
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5324699726946577357
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +201,7 @@ GameObject:
   - component: {fileID: 5324699726946577354}
   - component: {fileID: 5324699726946577355}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

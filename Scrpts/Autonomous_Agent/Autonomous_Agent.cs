@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using static AutonomousAgentData;
 
 public class Autonomous_Agent : Agent
 {
     public Perception flockPerception;
+    public ObstaclePerception obstaclePerception;
     public AutonomousAgentData data;
 
     public float wanderAngle { get; set; } = 0;
@@ -33,6 +35,14 @@ public class Autonomous_Agent : Agent
 
         }
 
+        // obstacle avoidance 
+        if (obstaclePerception.IsObstacleInFront())
+        {
+            Vector3 direction = obstaclePerception.GetOpenDirection();
+            movement.ApplyForce(Steering.CalculateSteering(this, direction) * data.obstacleWeight);
+        }
+
+        //wander
         if (movement.acceleration.sqrMagnitude <= movement.maxForce * 0.1f)
         {
             movement.ApplyForce(Steering.Wander(this));

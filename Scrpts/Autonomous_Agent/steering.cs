@@ -60,7 +60,7 @@ public class Steering
         Vector3 separation = Vector3.zero;
         // accumulate separation vector of neighbors 
         foreach (GameObject neighbor in neighbors) {
-            Vector3 direction = neighbor.transform.position - agent.transform.position;
+            Vector3 direction =  agent.transform.position - neighbor.transform.position;
             if (direction.magnitude < radius)
             {
                 // scale direction by distance (closer = stronger) 

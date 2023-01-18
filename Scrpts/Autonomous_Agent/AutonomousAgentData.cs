@@ -13,10 +13,11 @@ public class AutonomousAgentData : ScriptableObject
         [Header("Flocking")]
         [Range(0, 20)] public float separationRadius = 1;
         [Header("Weights")]
-        [Range(0, 5)] public float seekWeight = 1;
-        [Range(0, 5)] public float fleeWeight = 1;
-        [Range(0, 5)] public float cohesionWeight = 1;
-        [Range(0, 5)] public float separationWeight = 1;
-        [Range(0, 5)] public float alignmentWeight = 1;
-    
+        [Range(0, 1)] public float seekWeight = 1;
+        [Range(0, 1)] public float fleeWeight = 1;
+        [Range(0, 1)] public float cohesionWeight = 1;
+        [Range(0, 1)] public float separationWeight = 1;
+        [Range(0, 1)] public float alignmentWeight = 1;
+        [Range(0, 1)] public float obstacleWeight = 1;
+
 }
