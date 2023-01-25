@@ -11,10 +11,11 @@ public abstract class Perception : MonoBehaviour
 
     public abstract GameObject[] GetGameObjects();
 
+    /*
     public void SortByDistance(List<GameObject> gameObjects)
     {
         gameObjects.Sort(CompareDistance);
-    }
+    }*/
 
     public int CompareDistance(GameObject a, GameObject b)
     {

@@ -48,6 +48,9 @@ public class Autonomous_Agent : Agent
             movement.ApplyForce(Steering.Wander(this));
         }
 
-        transform.position = Utilities.Wrap(transform.position, new Vector3(-50, -50, -50), new Vector3(50, 50, 50));
+        Vector3 position = transform.position;
+        position = Utilities.Wrap(position, new Vector3(-50, -50, -50), new Vector3(50, 50, 50));
+        position.y = 0;
+        transform.position = position;
     }
 }
