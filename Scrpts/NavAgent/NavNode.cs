@@ -32,6 +32,20 @@ public class NavNode : MonoBehaviour
     {
         return FindObjectsOfType<NavNode>();
     }
+    public static NavNode[] GetNodesWithTag(string tag)
+    {
+        var gameObjects = GameObject.FindGameObjectsWithTag(tag);
+        List<NavNode> nodes = new List<NavNode>();
+        foreach (var go in gameObjects)
+        {
+            if (go.TryGetComponent<NavNode>(out NavNode navNode))
+            {
+                nodes.Add(navNode);
+            }
+        }
+
+        return nodes.ToArray();
+    }
 
     public static NavNode GetRandomNode()
     {
